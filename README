@@ -1,0 +1,32 @@
+Metronome with PIC16F690
+
+The tempo and beat number are selected by 4 switches. Tempo: 20-180, beat:2-16
+The beat is audible and visible.
+The 1st beat is 880HZ and red/green led, the other beats are 440Hz and green.
+The tempo and beat are stored in EEPROM, new run starts from last set values.
+
+Hw setup
+
+// PIC PIN functions
+//                      RA_0              PIC19 XMIT
+//                      RA_1              PIC18 RCV 
+#define FIRST_BEAT_LED  PIN_A2       //   PIC17 LED out for 1st beat
+//                      RA_3              PIC 4 VPP
+#define SOUND_OUT       PIN_A4     //     PIC 3 - A pwm output for sound and LED beats
+
+//   LCD PINs
+#define LCD_ENABLE_PIN  PIN_C0        // PIC16-LCD PIN6 
+#define LCD_RS_PIN      PIN_C1        // PIC15-LCD PIN4
+#define LCD_RW_PIN      PIN_C2        // PIC14 - empty, (LCD PIN5:Ground - only write)
+//                      PIN_C3           PIC 7 - empty
+//   data1              PIN_C4           PIC 6 -LCD PIN11
+//   data2              PIN_C5           PIC 5 -LCD PIN12
+//   data3              PIN_C6           PIC 8 -LCD PIN13
+//   data4              PIN_C7           PIC 9 -LCD PIN14
+//
+//    INPUT PINs
+//                  PIN_B4             //PIC 13 - SW1 in - Tempo DOWN
+//                  PIN_B5             //PIC 12 - SW2 in - Tempo UP
+//                  PIN_B6             //PIC 11 - SW3 in - Beat UP
+//                  PIN_B7             //PIC 10 - SW4 in - Beat DOWN
+
